@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/:match*",
+      "destination": "https://s3.eu-west-1.amazonaws.com/i.smn.lol/:match*"
+    }
+  ]
+}
