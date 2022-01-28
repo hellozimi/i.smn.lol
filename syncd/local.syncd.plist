@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin</string>
+      <key>AWS_PROFILE</key>
+      <string>smn</string>
+    </dict>
+    <key>Label</key>
+    <string>local.syncd</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/simon/dev/hellozimi/i.smn.lol/syncd/syncd</string>
+      <string>-d</string>
+      <string>/Users/simon/screenshots</string>
+      <string>-b</string>
+      <string>i.smn.lol</string>
+      <string>-u</string>
+      <string>i.smn.lol</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true />
+    <key>KeepAlive</key>
+    <true />
+    <key>StandardOutPath</key>
+    <string>/tmp/syncd.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/syncd.stderr</string>
+  </dict>
+</plist>

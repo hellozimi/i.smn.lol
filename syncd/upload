@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+AWS=$(which aws)
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -b|--bucket)
+      BUCKET="$2"
+      shift 2 ;;
+    -u|--baseurl)
+      BASE_URL="$2"
+      shift 2 ;;
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1 ;;
+    *)
+      FILE="$1"
+      shift ;;
+  esac
+done
+
+if [[ -z "$FILE" ]]; then
+  echo "no file passed"
+  exit 1
+fi
+
+if [[ -z "$BUCKET" ]]; then
+  echo "no bucket passed, use -b | --bucket"
+  exit 1
+fi
+
+if [[ -e "$FILE" ]]; then
+  AWS s3 cp "$FILE" s3://$BUCKET
+  osascript -e 'display notification "s3 url copied to clipboard" with title "Screenshot uploaded"'
+  FILENAME="${FILE##*/}"
+  echo "https://$BASE_URL/${FILENAME// /%20}" | pbcopy
+else
+  echo "file: $FILE doesn't exist"
+fi
+
